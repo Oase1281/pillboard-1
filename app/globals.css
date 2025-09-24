@@ -1,0 +1,216 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color scheme for blackboard aesthetic */
+  --background: #1f2937; /* Blackboard dark gray */
+  --foreground: #ffffff; /* White text */
+  --card: #374151; /* Image slot background */
+  --card-foreground: #ffffff; /* Image slot text */
+  --popover: #f1f5f9; /* Tooltip background */
+  --popover-foreground: #374151; /* Tooltip text */
+  --primary: rgb(31, 42, 56); /* Background for main areas */
+  --primary-foreground: #ffffff; /* Text on primary background */
+  --secondary: #f1f5f9; /* Light background for navigation */
+  --secondary-foreground: #1f2937; /* Text on secondary background */
+  --muted: #6b7280; /* Borders and subtle elements */
+  --muted-foreground: #ffffff; /* Text on muted backgrounds */
+  --accent: #8b5cf6; /* Highlight and interactive elements */
+  --accent-foreground: #ffffff; /* Text on accent elements */
+  --destructive: #dc2626; /* Error elements */
+  --destructive-foreground: #ffffff; /* Text on destructive elements */
+  --border: rgb(0, 0, 0); /* Border color */
+  --input: rgb(129, 236, 86); /* Input fields */
+  --ring: rgb(152, 208, 235); /* Focus ring */
+  --chart-1: rgb(219, 37, 37);
+  --chart-2: #059669;
+  --chart-3: #1f2937;
+  --chart-4: #f59e0b;
+  --chart-5: #8b5cf6;
+  --radius: 0.5rem;
+  --sidebar: #374151;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #1f2937;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #8b5cf6;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #6b7280;
+  --sidebar-ring: #8b5cf6;
+}
+
+.dark {
+  /* Dark mode uses same blackboard colors */
+  --background: #1f2937;
+  --foreground: #ffffff;
+  --card: #374151;
+  --card-foreground: #ffffff;
+  --popover: #f1f5f9;
+  --popover-foreground: #374151;
+  --primary: #1f2937;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #1f2937;
+  --muted: #6b7280;
+  --muted-foreground: #ffffff;
+  --accent: #8b5cf6;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #6b7280;
+  --input: #f1f5f9;
+  --ring: #8b5cf6;
+  --chart-1: #dc2626;
+  --chart-2: #059669;
+  --chart-3: #1f2937;
+  --chart-4: #f59e0b;
+  --chart-5: #8b5cf6;
+  --radius: 0.5rem;
+  --sidebar: #374151;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #1f2937;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #8b5cf6;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #6b7280;
+  --sidebar-ring: #8b5cf6;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Updated cursor to use smaller 32x32 pixel version for browser compatibility */
+    cursor: url("/pill-cursor-small.jpg") 16 16, auto;
+  }
+}
+
+/* Adding keyframe animation for falling pills */
+@keyframes pill-fall {
+  0% {
+    transform: translateY(-32px);
+    opacity: 0.8;
+  }
+  60% {
+    /* Increased fall distance to reach the actual bottom of the page content */
+    transform: translateY(calc(100vh + 1200px));
+    opacity: 0.8;
+  }
+  80% {
+    /* Updated to match the new fall distance */
+    transform: translateY(calc(100vh + 1200px));
+    opacity: 0.8;
+  }
+  100% {
+    /* Updated to match the new fall distance */
+    transform: translateY(calc(100vh + 1200px));
+    opacity: 0;
+  }
+}
+
+.animate-pill-fall {
+  animation: pill-fall 8s linear forwards;
+}
+
+/* Adding border pill orbit animation for counter-clockwise movement around grid edges */
+@keyframes border-pill-orbit {
+  0% {
+    /* Start at top-right corner */
+    top: 10%;
+    left: calc(50% + 320px);
+  }
+  25% {
+    /* Move to top-left corner */
+    top: 10%;
+    left: calc(50% - 320px);
+  }
+  50% {
+    /* Move to bottom-left corner */
+    top: calc(100% - 200px);
+    left: calc(50% - 320px);
+  }
+  75% {
+    /* Move to bottom-right corner */
+    top: calc(100% - 200px);
+    left: calc(50% + 320px);
+  }
+  100% {
+    /* Return to top-right corner */
+    top: 10%;
+    left: calc(50% + 320px);
+  }
+}
+
+.animate-border-pill-orbit {
+  animation: border-pill-orbit 16s linear infinite;
+}
+
+/* Added visual guides to show the square formation pattern */
+.grid {
+  position: relative;
+}
+
+.grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Subtle grid lines to show the square formation */
+  background: linear-gradient(to right, rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+  background-size: calc(100% / 12) 80px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Enhanced visual hierarchy for the organized layout */
+.grid > div {
+  position: relative;
+  z-index: 2;
+}
