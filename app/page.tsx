@@ -391,7 +391,7 @@ export default function LiveImageBoard() {
 
         {/* Footer */}
         <div className="text-center mt-8 text-sm text-muted-foreground">
-          <p className="drop-shadow-md bg-background/60 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">CA:</p>
+          <p className="drop-shadow-md bg-background/60 backdrop-blur-sm rounded-lg px-4 py-2 inline-block text-lg">CA:</p>
         </div>
       </div>
 
