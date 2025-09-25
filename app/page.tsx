@@ -29,6 +29,7 @@ export default function LiveImageBoard() {
   const [modalImage, setModalImage] = useState<{ url: string; position: number } | null>(null)
   const [backgroundImage, setBackgroundImage] = useState<string | null>("/pump-fun-background.jpeg")
   const [fallingPills, setFallingPills] = useState<FallingPill[]>([])
+  const [latestUploadedPosition, setLatestUploadedPosition] = useState<number | null>(null)
   const supabase = createClient()
 
   useEffect(() => {
@@ -57,6 +58,12 @@ export default function LiveImageBoard() {
                 ...prev,
                 [newImage.position]: newImage,
               }))
+              if (payload.eventType === "INSERT") {
+                setLatestUploadedPosition(newImage.position)
+                setTimeout(() => {
+                  setLatestUploadedPosition(null)
+                }, 3000)
+              }
             }
           } else if (payload.eventType === "DELETE") {
             const deletedImage = payload.old as ImageData
@@ -385,13 +392,16 @@ export default function LiveImageBoard() {
               onImageRemove={handleImageRemove}
               onImageClick={handleImageClick}
               className="aspect-square" // All boxes are now square and same size
+              isLatestUpload={latestUploadedPosition === index}
             />
           ))}
         </div>
 
         {/* Footer */}
         <div className="text-center mt-8 text-sm text-muted-foreground">
-          <p className="drop-shadow-md bg-background/60 backdrop-blur-sm rounded-lg px-4 py-2 inline-block text-lg">CA:</p>
+          <p className="drop-shadow-md bg-background/60 backdrop-blur-sm rounded-lg px-4 py-2 inline-block text-lg">
+            CA:
+          </p>
         </div>
       </div>
 

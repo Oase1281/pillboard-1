@@ -13,6 +13,7 @@ interface ImageSlotProps {
   onImageRemove: (position: number) => void
   onImageClick: (imageUrl: string, position: number) => void // Added callback for image click
   className?: string // Added className prop for size variations
+  isLatestUpload?: boolean
 }
 
 export function ImageSlot({
@@ -22,6 +23,7 @@ export function ImageSlot({
   onImageRemove,
   onImageClick,
   className,
+  isLatestUpload = false,
 }: ImageSlotProps) {
   const [isUploading, setIsUploading] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -95,7 +97,13 @@ export function ImageSlot({
             ) : (
               <>
                 <Upload className="h-6 w-6 mx-auto mb-1 text-muted-foreground/60" />
-                <div className="text-xs text-muted-foreground/40 font-medium">{position}</div>
+                <div
+                  className={`text-xs font-medium ${
+                    isLatestUpload ? "text-white animate-glow-pulse" : "text-muted-foreground/40"
+                  }`}
+                >
+                  {position}
+                </div>
               </>
             )}
           </div>
