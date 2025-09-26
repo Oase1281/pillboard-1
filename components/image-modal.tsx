@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { X } from "lucide-react"
+// import { X } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 
 interface ImageModalProps {
@@ -33,7 +33,9 @@ export function ImageModal({ imageUrl, position, isOpen, onClose }: ImageModalPr
           className="absolute top-2 right-2 z-10 bg-background/80 hover:bg-background"
           onClick={onClose}
         >
-          <X className="h-4 w-4" />
+          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </Button>
         <img
           src={imageUrl || "/placeholder.svg"}

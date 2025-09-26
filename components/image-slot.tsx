@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useRef } from "react"
-import { Upload, X } from "lucide-react"
+// import { Upload, X } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 
 interface ImageSlotProps {
@@ -77,7 +77,9 @@ export function ImageSlot({
               onImageRemove(position)
             }}
           >
-            <X className="h-3 w-3" />
+            <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </Button>
         </>
       ) : (
@@ -96,7 +98,19 @@ export function ImageSlot({
               <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-accent mx-auto"></div>
             ) : (
               <>
-                <Upload className="h-6 w-6 mx-auto mb-1 text-muted-foreground/60" />
+                <svg
+                  className="h-6 w-6 mx-auto mb-1 text-muted-foreground/60"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                  />
+                </svg>
                 <div
                   className={`text-xs font-medium ${
                     isLatestUpload ? "text-white animate-glow-pulse" : "text-muted-foreground/40"
